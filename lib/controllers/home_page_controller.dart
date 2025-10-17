@@ -1,0 +1,139 @@
+import 'package:get/get.dart';
+import 'package:lab_2/list_items/list_item.dart';
+import 'package:lab_2/list_items/spacer_item.dart';
+import 'package:lab_2/list_items/welcome_header_item.dart';
+import 'package:lab_2/list_items/search_bar_list_item.dart';
+import 'package:lab_2/list_items/section_item.dart';
+import 'package:lab_2/list_items/continue_watching_list_item.dart';
+import 'package:lab_2/list_items/continue_watching_card_item.dart';
+import 'package:lab_2/list_items/categories_list_item.dart';
+import 'package:lab_2/list_items/category_item.dart';
+import 'package:lab_2/list_items/card_carousel_item.dart';
+import 'package:lab_2/list_items/card_item.dart';
+
+class HomePageController extends GetxController {
+  RxList<ListItem> items = RxList();
+
+  @override
+  void onInit() {
+    super.onInit();
+    addItems();
+  }
+
+  void addItems() {
+    items.add(SpacerItem(height: 6));
+
+    items.add(WelcomeHeaderItem(userName: " Sidra"));
+
+    items.add(SpacerItem(height: 22));
+
+    items.add(SearchBarListItem(
+      onSearchChanged: (value) {},
+    ));
+
+    items.add(SpacerItem(height: 17));
+
+    items.add(SectionItem(title: "Continue Watching", rightTitle: ""));
+
+    items.add(SpacerItem(height: 11));
+
+    items.add(
+      ContinueWatchingListItem(continueWatchingList: [
+        ContinueWatchingCardItem(
+          imagePath: "lib/img/continue_watching/course1.jpg",
+          title: "UI/UX Design Essentials",
+          publisher: "Tech Innovations University",
+          rating: 4.9,
+          progress: 79,
+        ),
+        ContinueWatchingCardItem(
+          imagePath: "lib/img/continue_watching/course2.jpg",
+          title: "Graphic Design Fundamentals",
+          publisher: "Creative Arts Institute",
+          rating: 4.7,
+          progress: 35,
+        ),
+      ]),
+    );
+
+    items.add(SpacerItem(height: 17));
+
+    items.add(SectionItem(title: "Categories", rightTitle: "See All"));
+
+    items.add(SpacerItem(height: 11));
+
+    items.add(
+      CategoriesListItem(categoryItems: [
+        CategoryItem(name: "Graphic Design"),
+        CategoryItem(name: "User Interface"),
+        CategoryItem(name: "User Experience"),
+      ]),
+    );
+
+    items.add(SpacerItem(height: 17));
+
+    items.add(SectionItem(title: "Suggestions for You", rightTitle: "See All"));
+
+    items.add(SpacerItem(height: 12));
+
+    items.add(
+      CardCarouselItem(cardItems: [
+        CardItem(
+          imagePath: "lib/img/courses/uiux.jpg",
+          title: "Typography and Layout Design",
+          publisher: "Visual Communication College",
+          rating: 4.7,
+          saved: false,
+        ),
+        CardItem(
+          imagePath: "lib/img/courses/branding.jpg",
+          title: "Branding and Identity Design",
+          publisher: "Innovation and Design School",
+          rating: 4.4,
+          saved: true,
+        ),
+        CardItem(
+          imagePath: "lib/img/courses/webdesign.jpg",
+          title: "Web Design Fundamentals",
+          publisher: "Web Development University",
+          rating: 4.9,
+          saved: false,
+        ),
+      ]),
+    );
+
+    items.add(SpacerItem(height: 16));
+
+    items.add(SectionItem(title: "Top Courses", rightTitle: "See All"));
+
+    items.add(SpacerItem(height: 11));
+
+    items.add(
+      CardCarouselItem(cardItems: [
+        CardItem(
+          imagePath: "lib/img/courses/animation.jpg",
+          title: "Animation and Motion Graphics",
+          publisher: "National Institute of Digital Arts",
+          rating: 4.8,
+          saved: true,
+        ),
+        CardItem(
+          imagePath: "lib/img/courses/gamedev.jpg",
+          title: "Game Design and Development",
+          publisher: "Game Dev Academy",
+          rating: 4.6,
+          saved: true,
+        ),
+        CardItem(
+          imagePath: "lib/img/courses/product.jpg",
+          title: "Product Design and Innovation",
+          publisher: "UX Development Lab",
+          rating: 4.5,
+          saved: false,
+        ),
+      ]),
+    );
+
+    items.add(SpacerItem(height: 11));
+  }
+}
