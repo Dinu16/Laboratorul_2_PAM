@@ -40,6 +40,7 @@ class HomePageController extends GetxController {
     items.add(
       ContinueWatchingListItem(continueWatchingList: [
         ContinueWatchingCardItem(
+          id: "1",
           imagePath: "lib/img/continue_watching/course1.jpg",
           title: "UI/UX Design Essentials",
           publisher: "Tech Innovations University",
@@ -47,6 +48,7 @@ class HomePageController extends GetxController {
           progress: 79,
         ),
         ContinueWatchingCardItem(
+          id: "2",
           imagePath: "lib/img/continue_watching/course2.jpg",
           title: "Graphic Design Fundamentals",
           publisher: "Creative Arts Institute",
