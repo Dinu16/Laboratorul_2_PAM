@@ -81,21 +81,24 @@ class HomePageController extends GetxController {
     items.add(
       CardCarouselItem(cardItems: [
         CardItem(
-          imagePath: "lib/img/courses/uiux.jpg",
+          id: "6",
+          imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60",
           title: "Typography and Layout Design",
           publisher: "Visual Communication College",
           rating: 4.7,
           saved: false,
         ),
         CardItem(
-          imagePath: "lib/img/courses/branding.jpg",
+          id: "7",
+          imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60",
           title: "Branding and Identity Design",
           publisher: "Innovation and Design School",
           rating: 4.4,
           saved: true,
         ),
         CardItem(
-          imagePath: "lib/img/courses/webdesign.jpg",
+          id: "8",
+          imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60",
           title: "Web Design Fundamentals",
           publisher: "Web Development University",
           rating: 4.9,
@@ -113,21 +116,24 @@ class HomePageController extends GetxController {
     items.add(
       CardCarouselItem(cardItems: [
         CardItem(
-          imagePath: "lib/img/courses/animation.jpg",
+          id: "9",
+          imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60",
           title: "Animation and Motion Graphics",
           publisher: "National Institute of Digital Arts",
           rating: 4.8,
           saved: true,
         ),
         CardItem(
-          imagePath: "lib/img/courses/gamedev.jpg",
+          id: "10",
+          imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60",
           title: "Game Design and Development",
           publisher: "Game Dev Academy",
           rating: 4.6,
           saved: true,
         ),
         CardItem(
-          imagePath: "lib/img/courses/product.jpg",
+          id: "11",
+          imageUrl: "https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=800&q=60",
           title: "Product Design and Innovation",
           publisher: "UX Development Lab",
           rating: 4.5,
