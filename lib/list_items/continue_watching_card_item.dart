@@ -2,7 +2,7 @@ import 'package:lab_2/list_items/list_item.dart';
 
 class ContinueWatchingCardItem extends ListItem {
   final String id;
-  final String imagePath;
+  final String imageUrl;
   final String title;
   final String publisher;
   final double? rating;
@@ -10,7 +10,7 @@ class ContinueWatchingCardItem extends ListItem {
 
   ContinueWatchingCardItem(
       {required this.id,
-      required this.imagePath,
+      required this.imageUrl,
       required this.title,
       required this.rating,
       required this.progress,

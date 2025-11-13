@@ -41,7 +41,7 @@ class HomePageController extends GetxController {
       ContinueWatchingListItem(continueWatchingList: [
         ContinueWatchingCardItem(
           id: "1",
-          imagePath: "lib/img/continue_watching/course1.jpg",
+          imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=60",
           title: "UI/UX Design Essentials",
           publisher: "Tech Innovations University",
           rating: 4.9,
@@ -49,7 +49,7 @@ class HomePageController extends GetxController {
         ),
         ContinueWatchingCardItem(
           id: "2",
-          imagePath: "lib/img/continue_watching/course2.jpg",
+          imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=60",
           title: "Graphic Design Fundamentals",
           publisher: "Creative Arts Institute",
           rating: 4.7,

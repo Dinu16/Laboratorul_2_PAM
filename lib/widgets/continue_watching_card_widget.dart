@@ -12,9 +12,7 @@ class ContinueWatchingCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(
-            '/course-display-page'
-        );
+        Get.toNamed('/course-display-page');
       },
       child: Container(
         height: 77,
@@ -34,11 +32,37 @@ class ContinueWatchingCardWidget extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(5),
-              child: Image.asset(
-                item.imagePath,
+              child: Image.network(
+                item.imageUrl,
                 width: 87,
                 height: 58,
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    width: 87,
+                    height: 58,
+                    color: Colors.grey.shade200,
+                    alignment: Alignment.center,
+                    child:
+                        Icon(Icons.broken_image, size: 18, color: Colors.grey),
+                  );
+                },
+                loadingBuilder: (context, child, progress) {
+                  if (progress == null) return child;
+                  return Container(
+                    width: 87,
+                    height: 58,
+                    color: Colors.grey.shade100,
+                    alignment: Alignment.center,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      value: progress.expectedTotalBytes != null
+                          ? progress.cumulativeBytesLoaded /
+                              progress.expectedTotalBytes!
+                          : null,
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(width: 14),
@@ -119,4 +143,3 @@ class ContinueWatchingCardWidget extends StatelessWidget {
     );
   }
 }
-
