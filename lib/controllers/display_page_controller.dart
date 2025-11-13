@@ -24,7 +24,9 @@ class DisplayPageController extends GetxController {
 
   void addItems() {
     items.add(VideoDetailsListItem(
-        imagePath: "lib/img/continue_watching/course1.jpg", saved: true));
+        thumbnail: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60",
+        previewVideo: "https://www.w3schools.com/html/mov_bbb.mp4",
+        saved: true));
 
     items.add(SpacerItem(height: 21));
 
@@ -33,6 +35,7 @@ class DisplayPageController extends GetxController {
       publisher: 'Visual Communication College',
       studentsEnrolled: 3400,
       price: 35,
+      currency: "USD"
     ));
 
     items.add(SpacerItem(height: 20));
@@ -67,7 +70,7 @@ class DisplayPageController extends GetxController {
     items.add(SectionDetailsListItem(title: 'Skills'));
 
     items.add(SpacerItem(height: 10));
-    
+
     items.add(SkillsListItem(skillsList: [
       SkillsItem(title: 'Typography'),
       SkillsItem(title: 'Layout Composition'),

@@ -27,13 +27,12 @@ class TitlePriceWidget extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.visible,
                   style: TextStyle(
-                    color: AppColors.color434C,
-                    fontSize: 21,
-                    fontWeight: FontWeight.w700,
-                    height: 1.0,
-                    fontFamily: 'Plus Jakarta Sans',
-                    letterSpacing: 1.0
-                  ),
+                      color: AppColors.color434C,
+                      fontSize: 21,
+                      fontWeight: FontWeight.w700,
+                      height: 1.0,
+                      fontFamily: 'Plus Jakarta Sans',
+                      letterSpacing: 1.0),
                 ),
                 const SizedBox(height: 5),
                 Column(
@@ -45,13 +44,12 @@ class TitlePriceWidget extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        color: AppColors.color707E,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'Plus Jakarta Sans',
-                        height: 1.0,
-                        letterSpacing: 0.5
-                      ),
+                          color: AppColors.color707E,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Plus Jakarta Sans',
+                          height: 1.0,
+                          letterSpacing: 0.5),
                     ),
                     const SizedBox(height: 5),
                     if (item.studentsEnrolled != null)
@@ -64,13 +62,12 @@ class TitlePriceWidget extends StatelessWidget {
                           Text(
                             '${_compact(item.studentsEnrolled!)} students already enrolled',
                             style: TextStyle(
-                              color: AppColors.color707E,
-                              fontSize: 8,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Plus Jakarta Sans',
-                              height: 1.0,
-                              letterSpacing: 0.5
-                            ),
+                                color: AppColors.color707E,
+                                fontSize: 8,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Plus Jakarta Sans',
+                                height: 1.0,
+                                letterSpacing: 0.5),
                           ),
                         ],
                       ),
@@ -79,11 +76,9 @@ class TitlePriceWidget extends StatelessWidget {
               ],
             ),
           ),
-
           const SizedBox(width: 12),
-
           Text(
-            '${item.price}\$',
+            '${_currencySymbol(item.currency)}${item.price}',
             textAlign: TextAlign.right,
             style: TextStyle(
               color: AppColors.color434C,
@@ -102,11 +97,32 @@ class TitlePriceWidget extends StatelessWidget {
   String _compact(int n) {
     if (n >= 1000000) {
       final v = n / 1000000;
-      return v % 1 == 0 ? '${v.toStringAsFixed(0)}M' : '${v.toStringAsFixed(1)}M';
+      return v % 1 == 0
+          ? '${v.toStringAsFixed(0)}M'
+          : '${v.toStringAsFixed(1)}M';
     } else if (n >= 1000) {
       final v = n / 1000;
-      return v % 1 == 0 ? '${v.toStringAsFixed(0)}k' : '${v.toStringAsFixed(1)}k';
+      return v % 1 == 0
+          ? '${v.toStringAsFixed(0)}k'
+          : '${v.toStringAsFixed(1)}k';
     }
     return '$n';
+  }
+
+  String _currencySymbol(String currency) {
+    switch (currency.toUpperCase()) {
+      case 'USD':
+        return '\$';
+      case 'EUR':
+        return '€';
+      case 'GBP':
+        return '£';
+      case 'MDL':
+        return 'MDL'; // fără simbol oficial
+      case 'RON':
+        return 'lei';
+      default:
+        return currency;
+    }
   }
 }

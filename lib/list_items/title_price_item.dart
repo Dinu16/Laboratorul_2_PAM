@@ -5,10 +5,12 @@ class TitlePriceItem extends ListItem {
   final String publisher;
   final int? studentsEnrolled;
   final int price;
+  final String currency;
 
   TitlePriceItem(
       {required this.title,
       required this.publisher,
       required this.price,
-      required this.studentsEnrolled});
+      required this.studentsEnrolled,
+      required this.currency});
 }
