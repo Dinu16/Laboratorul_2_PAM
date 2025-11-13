@@ -23,7 +23,7 @@ class HomePageController extends GetxController {
   void addItems() {
     items.add(SpacerItem(height: 6));
 
-    items.add(WelcomeHeaderItem(userName: " Sidra"));
+    items.add(WelcomeHeaderItem(userName: " Sidra", nrOfNotifications: 5));
 
     items.add(SpacerItem(height: 22));
 
