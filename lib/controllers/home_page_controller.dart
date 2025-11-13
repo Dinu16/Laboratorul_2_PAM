@@ -66,9 +66,9 @@ class HomePageController extends GetxController {
 
     items.add(
       CategoriesListItem(categoryItems: [
-        CategoryItem(name: "Graphic Design"),
-        CategoryItem(name: "User Interface"),
-        CategoryItem(name: "User Experience"),
+        CategoryItem(id: "3", name: "Graphic Design"),
+        CategoryItem(id: "4",name: "User Interface"),
+        CategoryItem(id: "5",name: "User Experience"),
       ]),
     );
 
