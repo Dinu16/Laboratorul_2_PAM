@@ -14,6 +14,7 @@ class CategoriesListWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: item.categoryItems
+            .take(3)
             .map((category) => CategoryWidget(item: category))
             .toList(),
       ),
