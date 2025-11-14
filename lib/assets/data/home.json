@@ -10,7 +10,7 @@
       "institute": "Tech Innovations University",
       "rating": 4.9,
       "progress": 79,
-      "image": "https://images.unsplash.com/photo-1581091215367-59ab6b90d1e5?auto=format&fit=crop&w=800&q=60"
+      "image": "https://images.unsplash.com/photo-1541462608143-67571c6738dd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": "course_graphic_design_fundamentals",
@@ -18,7 +18,7 @@
       "institute": "Creative Arts Institute",
       "rating": 4.7,
       "progress": 35,
-      "image": "https://images.unsplash.com/photo-1580894732444-8ecded7900f9?auto=format&fit=crop&w=800&q=60"
+      "image": "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
   ],
   "categories": [
@@ -79,7 +79,7 @@
       "title": "Game Design and Development",
       "institute": "Game Development Academy",
       "rating": 4.4,
-      "image": "https://images.unsplash.com/photo-1590608897129-79da98d159e9?auto=format&fit=crop&w=800&q=60"
+      "image": "https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": "course_product_design_innovation",
