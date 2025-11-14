@@ -10,20 +10,53 @@ import 'package:lab_2/list_items/categories_list_item.dart';
 import 'package:lab_2/list_items/category_item.dart';
 import 'package:lab_2/list_items/card_carousel_item.dart';
 import 'package:lab_2/list_items/card_item.dart';
+import 'package:lab_2/services/data_service.dart';
+
+import '../model/home_model.dart';
 
 class HomePageController extends GetxController {
   RxList<ListItem> items = RxList();
+  final RxBool isLoading = true.obs;
+  final RxString errorMessage = ''.obs;
+  final RxSet<String> bookmarkedCourses = <String>{}.obs;
 
   @override
   void onInit() {
     super.onInit();
-    addItems();
+    loadData();
   }
 
-  void addItems() {
+  void toggleBookmark(String courseId) {
+    if (bookmarkedCourses.contains(courseId)) {
+      bookmarkedCourses.remove(courseId);
+    } else {
+      bookmarkedCourses.add(courseId);
+    }
+  }
+
+  bool isBookmarked(String courseId) {
+    return bookmarkedCourses.contains(courseId);
+  }
+
+  Future<void> loadData() async {
+    try {
+      isLoading.value = true;
+      errorMessage.value = '';
+      final HomeModel homeData = await DataService.loadHomeData();
+      addItems(homeData);
+      isLoading.value = false;
+    } catch (e) {
+      errorMessage.value = 'Failed to load data: $e';
+      isLoading.value = false;
+    }
+  }
+
+  void addItems(HomeModel homeData) {
     items.add(SpacerItem(height: 6));
 
-    items.add(WelcomeHeaderItem(userName: " Sidra", nrOfNotifications: 5));
+    items.add(WelcomeHeaderItem(
+        userName: " ${homeData.user.name}",
+        nrOfNotifications: homeData.user.notifications));
 
     items.add(SpacerItem(height: 22));
 
@@ -38,24 +71,18 @@ class HomePageController extends GetxController {
     items.add(SpacerItem(height: 11));
 
     items.add(
-      ContinueWatchingListItem(continueWatchingList: [
-        ContinueWatchingCardItem(
-          id: "1",
-          imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=60",
-          title: "UI/UX Design Essentials",
-          publisher: "Tech Innovations University",
-          rating: 4.9,
-          progress: 79,
-        ),
-        ContinueWatchingCardItem(
-          id: "2",
-          imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=60",
-          title: "Graphic Design Fundamentals",
-          publisher: "Creative Arts Institute",
-          rating: 4.7,
-          progress: 35,
-        ),
-      ]),
+      ContinueWatchingListItem(
+        continueWatchingList: homeData.continueWatching
+            .map((course) => ContinueWatchingCardItem(
+          id: course.id,
+          imageUrl: course.image,
+          title: course.title,
+          publisher: course.institute,
+          rating: course.rating,
+          progress: course.progress,
+        ))
+            .toList(),
+      ),
     );
 
     items.add(SpacerItem(height: 17));
@@ -65,11 +92,14 @@ class HomePageController extends GetxController {
     items.add(SpacerItem(height: 11));
 
     items.add(
-      CategoriesListItem(categoryItems: [
-        CategoryItem(id: "3", name: "Graphic Design"),
-        CategoryItem(id: "4",name: "User Interface"),
-        CategoryItem(id: "5",name: "User Experience"),
-      ]),
+      CategoriesListItem(
+        categoryItems: homeData.categories
+            .map((category) => CategoryItem(
+          id: category.id,
+          name: category.name,
+        ))
+            .toList(),
+      ),
     );
 
     items.add(SpacerItem(height: 17));
@@ -79,32 +109,18 @@ class HomePageController extends GetxController {
     items.add(SpacerItem(height: 12));
 
     items.add(
-      CardCarouselItem(cardItems: [
-        CardItem(
-          id: "6",
-          imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60",
-          title: "Typography and Layout Design",
-          publisher: "Visual Communication College",
-          rating: 4.7,
-          saved: false,
-        ),
-        CardItem(
-          id: "7",
-          imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60",
-          title: "Branding and Identity Design",
-          publisher: "Innovation and Design School",
-          rating: 4.4,
+      CardCarouselItem(
+        cardItems: homeData.suggestions
+            .map((course) => CardItem(
+          id: course.id,
+          imageUrl: course.image,
+          title: course.title,
+          publisher: course.institute,
+          rating: course.rating,
           saved: true,
-        ),
-        CardItem(
-          id: "8",
-          imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60",
-          title: "Web Design Fundamentals",
-          publisher: "Web Development University",
-          rating: 4.9,
-          saved: false,
-        ),
-      ]),
+        ))
+            .toList(),
+      ),
     );
 
     items.add(SpacerItem(height: 16));
@@ -114,32 +130,18 @@ class HomePageController extends GetxController {
     items.add(SpacerItem(height: 11));
 
     items.add(
-      CardCarouselItem(cardItems: [
-        CardItem(
-          id: "9",
-          imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60",
-          title: "Animation and Motion Graphics",
-          publisher: "National Institute of Digital Arts",
-          rating: 4.8,
-          saved: true,
-        ),
-        CardItem(
-          id: "10",
-          imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=60",
-          title: "Game Design and Development",
-          publisher: "Game Dev Academy",
-          rating: 4.6,
-          saved: true,
-        ),
-        CardItem(
-          id: "11",
-          imageUrl: "https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=800&q=60",
-          title: "Product Design and Innovation",
-          publisher: "UX Development Lab",
-          rating: 4.5,
+      CardCarouselItem(
+        cardItems: homeData.topCourses
+            .map((course) => CardItem(
+          id: course.id,
+          imageUrl: course.image,
+          title: course.title,
+          publisher: course.institute,
+          rating: course.rating,
           saved: false,
-        ),
-      ]),
+        ))
+            .toList(),
+      ),
     );
 
     items.add(SpacerItem(height: 11));

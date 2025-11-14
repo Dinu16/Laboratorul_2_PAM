@@ -68,6 +68,7 @@ flutter:
     - lib/img/continue_watching/
     - lib/img/courses/
     - lib/img/details/
+    - lib/assets/data/
 
   fonts:
     - family: Plus Jakarta Sans
