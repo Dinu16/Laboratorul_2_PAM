@@ -30,15 +30,12 @@ class DisplayPageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Get course ID from arguments
     courseId = Get.arguments as String?;
-    // Check if course is bookmarked from home controller
     if (courseId != null && Get.isRegistered<HomePageController>()) {
       try {
         final homeController = Get.find<HomePageController>();
         isBookmarked.value = homeController.isBookmarked(courseId!);
       } catch (e) {
-        // HomePageController not found, use default value
         isBookmarked.value = false;
       }
     }
@@ -52,11 +49,9 @@ class DisplayPageController extends GetxController {
         homeController.toggleBookmark(courseId!);
         isBookmarked.value = homeController.isBookmarked(courseId!);
       } catch (e) {
-        // HomePageController not found, toggle local state only
         isBookmarked.value = !isBookmarked.value;
       }
     } else {
-      // Toggle local state if no home controller
       isBookmarked.value = !isBookmarked.value;
     }
   }
@@ -65,7 +60,7 @@ class DisplayPageController extends GetxController {
     try {
       isLoading.value = true;
       errorMessage.value = '';
-      items.clear(); // Clear previous items
+      items.clear();
       final DetailsModel detailsData = courseId != null
           ? await DataService.loadDetailsDataById(courseId!)
           : await DataService.loadDetailsData();
