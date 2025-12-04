@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/spacer_item.dart';
+import '../list_items/spacer_item.dart';
 
 class SpacerWidget extends StatelessWidget {
   const SpacerWidget({super.key, required this.item});
@@ -11,3 +11,5 @@ class SpacerWidget extends StatelessWidget {
     return SizedBox(height: item.height);
   }
 }
+
+

@@ -6,3 +6,5 @@ class CategoryItem extends ListItem {
 
   CategoryItem({required this.id, required this.name});
 }
+
+

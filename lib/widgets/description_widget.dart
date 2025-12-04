@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/description_list_item.dart';
-import 'package:lab_2/resources/app_colors.dart';
+import '../list_items/description_list_item.dart';
+import '../resources/app_colors.dart';
 
 class DescriptionWidget extends StatefulWidget {
   const DescriptionWidget({
@@ -127,3 +127,5 @@ class _DescriptionWidgetState extends State<DescriptionWidget> {
     return text;
   }
 }
+
+

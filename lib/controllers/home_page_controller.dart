@@ -1,20 +1,23 @@
 import 'package:get/get.dart';
-import 'package:lab_2/list_items/list_item.dart';
-import 'package:lab_2/list_items/spacer_item.dart';
-import 'package:lab_2/list_items/welcome_header_item.dart';
-import 'package:lab_2/list_items/search_bar_list_item.dart';
-import 'package:lab_2/list_items/section_item.dart';
-import 'package:lab_2/list_items/continue_watching_list_item.dart';
-import 'package:lab_2/list_items/continue_watching_card_item.dart';
-import 'package:lab_2/list_items/categories_list_item.dart';
-import 'package:lab_2/list_items/category_item.dart';
-import 'package:lab_2/list_items/card_carousel_item.dart';
-import 'package:lab_2/list_items/card_item.dart';
-import 'package:lab_2/services/data_service.dart';
-
-import '../model/home_model.dart';
+import 'package:domain/entities/home_model.dart';
+import 'package:domain/usecases/get_feed_usecase.dart';
+import '../list_items/list_item.dart';
+import '../list_items/spacer_item.dart';
+import '../list_items/welcome_header_item.dart';
+import '../list_items/search_bar_list_item.dart';
+import '../list_items/section_item.dart';
+import '../list_items/continue_watching_list_item.dart';
+import '../list_items/continue_watching_card_item.dart';
+import '../list_items/categories_list_item.dart';
+import '../list_items/category_item.dart';
+import '../list_items/card_carousel_item.dart';
+import '../list_items/card_item.dart';
 
 class HomePageController extends GetxController {
+  final GetFeedUseCase getFeedUseCase;
+
+  HomePageController({required this.getFeedUseCase});
+
   RxList<ListItem> items = RxList();
   final RxBool isLoading = true.obs;
   final RxString errorMessage = ''.obs;
@@ -42,7 +45,7 @@ class HomePageController extends GetxController {
     try {
       isLoading.value = true;
       errorMessage.value = '';
-      final HomeModel homeData = await DataService.loadHomeData();
+      final HomeModel homeData = await getFeedUseCase();
       addItems(homeData);
       isLoading.value = false;
     } catch (e) {
@@ -74,7 +77,7 @@ class HomePageController extends GetxController {
       ContinueWatchingListItem(
         continueWatchingList: homeData.continueWatching
             .map((course) => ContinueWatchingCardItem(
-          id: course.id,
+          id: course.id.toString(),
           imageUrl: course.image,
           title: course.title,
           publisher: course.institute,
@@ -112,12 +115,12 @@ class HomePageController extends GetxController {
       CardCarouselItem(
         cardItems: homeData.suggestions
             .map((course) => CardItem(
-          id: course.id,
+          id: course.id.toString(),
           imageUrl: course.image,
           title: course.title,
           publisher: course.institute,
           rating: course.rating,
-          saved: true,
+          saved: false,
         ))
             .toList(),
       ),
@@ -133,7 +136,7 @@ class HomePageController extends GetxController {
       CardCarouselItem(
         cardItems: homeData.topCourses
             .map((course) => CardItem(
-          id: course.id,
+          id: course.id.toString(),
           imageUrl: course.image,
           title: course.title,
           publisher: course.institute,

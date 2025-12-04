@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/category_item.dart';
+import '../list_items/category_item.dart';
 import '../resources/app_colors.dart';
 
 class CategoryWidget extends StatelessWidget {
@@ -10,7 +10,6 @@ class CategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 110,
       height: 33,
       padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 9),
       decoration: BoxDecoration(
@@ -21,18 +20,18 @@ class CategoryWidget extends StatelessWidget {
           width: 1,
         ),
       ),
-      child: Center(
-        child: Text(
-          item.name,
-          style: TextStyle(
-            color: AppColors.color434C,
-            fontFamily: 'Plus Jakarta Sans',
-            fontWeight: FontWeight.w600,
-            fontSize: 11,
-            height: 1.0,
-          ),
+      child: Text(
+        item.name,
+        style: TextStyle(
+          color: AppColors.color434C,
+          fontFamily: 'Plus Jakarta Sans',
+          fontWeight: FontWeight.w600,
+          fontSize: 11,
+          height: 1.0,
         ),
       ),
     );
   }
 }
+
+

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/lesson_item.dart';
+import '../list_items/lesson_item.dart';
 import '../resources/app_colors.dart';
 
 class LessonWidget extends StatelessWidget {
@@ -91,3 +91,5 @@ class LessonWidget extends StatelessWidget {
     );
   }
 }
+
+

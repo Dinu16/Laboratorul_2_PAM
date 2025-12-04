@@ -1,4 +1,4 @@
-import 'package:lab_2/list_items/list_item.dart';
+import 'list_item.dart';
 
 import 'category_item.dart';
 
@@ -7,3 +7,5 @@ class CategoriesListItem extends ListItem {
 
   CategoriesListItem({required this.categoryItems});
 }
+
+

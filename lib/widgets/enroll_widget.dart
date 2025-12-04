@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/resources/app_colors.dart';
+import '../resources/app_colors.dart';
 
 class EnrollWidget extends StatelessWidget {
   const EnrollWidget({super.key});
@@ -36,3 +36,5 @@ class EnrollWidget extends StatelessWidget {
     );
   }
 }
+
+

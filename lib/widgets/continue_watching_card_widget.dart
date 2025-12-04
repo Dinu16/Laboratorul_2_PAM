@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lab_2/list_items/continue_watching_card_item.dart';
+import '../list_items/continue_watching_card_item.dart';
 
 import '../resources/app_colors.dart';
 
@@ -12,10 +12,13 @@ class ContinueWatchingCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed('/course-display-page');
+        final courseId = item.id.toString().trim();
+        if (courseId.isNotEmpty) {
+          Get.toNamed('/course-display-page', arguments: courseId);
+        }
       },
       child: Container(
-        height: 77,
+        height: 80,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
@@ -44,7 +47,7 @@ class ContinueWatchingCardWidget extends StatelessWidget {
                     color: Colors.grey.shade200,
                     alignment: Alignment.center,
                     child:
-                        Icon(Icons.broken_image, size: 18, color: Colors.grey),
+                    Icon(Icons.broken_image, size: 18, color: Colors.grey),
                   );
                 },
                 loadingBuilder: (context, child, progress) {
@@ -58,7 +61,7 @@ class ContinueWatchingCardWidget extends StatelessWidget {
                       strokeWidth: 2,
                       value: progress.expectedTotalBytes != null
                           ? progress.cumulativeBytesLoaded /
-                              progress.expectedTotalBytes!
+                          progress.expectedTotalBytes!
                           : null,
                     ),
                   );

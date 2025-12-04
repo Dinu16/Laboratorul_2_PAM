@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/lesson_list_item.dart';
-import 'package:lab_2/widgets/lesson_widget.dart';
+import '../list_items/lesson_list_item.dart';
+import 'lesson_widget.dart';
 
 class LessonListWidget extends StatelessWidget {
   const LessonListWidget({super.key, required this.item});
@@ -19,3 +19,5 @@ class LessonListWidget extends StatelessWidget {
     );
   }
 }
+
+

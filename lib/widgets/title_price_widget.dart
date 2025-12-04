@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/title_price_item.dart';
-import 'package:lab_2/resources/app_colors.dart';
+import '../list_items/title_price_item.dart';
+import '../resources/app_colors.dart';
 
 class TitlePriceWidget extends StatelessWidget {
   const TitlePriceWidget({
@@ -126,3 +126,5 @@ class TitlePriceWidget extends StatelessWidget {
     }
   }
 }
+
+

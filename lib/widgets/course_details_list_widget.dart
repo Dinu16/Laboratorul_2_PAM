@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/course_details_list_item.dart';
-import 'package:lab_2/widgets/course_details_widget.dart';
+import '../list_items/course_details_list_item.dart';
+import 'course_details_widget.dart';
 
 class CourseDetailsListWidget extends StatelessWidget {
   const CourseDetailsListWidget({
@@ -23,3 +23,5 @@ class CourseDetailsListWidget extends StatelessWidget {
     );
   }
 }
+
+

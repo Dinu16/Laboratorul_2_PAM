@@ -1,4 +1,4 @@
-import 'package:lab_2/list_items/list_item.dart';
+import 'list_item.dart';
 
 class TitlePriceItem extends ListItem {
   final String title;
@@ -9,8 +9,10 @@ class TitlePriceItem extends ListItem {
 
   TitlePriceItem(
       {required this.title,
-      required this.publisher,
-      required this.price,
-      required this.studentsEnrolled,
-      required this.currency});
+        required this.publisher,
+        required this.price,
+        required this.studentsEnrolled,
+        required this.currency});
 }
+
+

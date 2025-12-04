@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lab_2/list_items/video_details_list_item.dart';
-import 'package:lab_2/resources/app_colors.dart';
+import '../controllers/display_page_controller.dart';
+import '../list_items/video_details_list_item.dart';
+import '../resources/app_colors.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoDetailsWidget extends StatefulWidget {
@@ -14,23 +15,25 @@ class VideoDetailsWidget extends StatefulWidget {
 }
 
 class _VideoDetailsWidgetState extends State<VideoDetailsWidget> {
-  late VideoPlayerController _controller;
+  VideoPlayerController? _controller;
   bool _isPlayingPreview = false;
 
   @override
   void initState() {
     super.initState();
 
-    _controller = VideoPlayerController.networkUrl(
-      Uri.parse(widget.item.previewVideo),
-    )..initialize().then((_) {
-      setState(() {});
-    });
+    if (widget.item.previewVideo.isNotEmpty) {
+      _controller = VideoPlayerController.networkUrl(
+        Uri.parse(widget.item.previewVideo),
+      )..initialize().then((_) {
+        setState(() {});
+      });
+    }
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller?.dispose();
     super.dispose();
   }
 
@@ -55,28 +58,27 @@ class _VideoDetailsWidgetState extends State<VideoDetailsWidget> {
               );
             },
           ),
-
-        if (_isPlayingPreview && _controller.value.isInitialized)
+        if (_isPlayingPreview &&
+            _controller != null &&
+            _controller!.value.isInitialized)
           SizedBox(
             height: 177,
             width: double.infinity,
-            child: VideoPlayer(_controller),
+            child: VideoPlayer(_controller!),
           ),
-
         if (!_isPlayingPreview)
           Container(
             height: 177,
             width: double.infinity,
             color: AppColors.color8697.withOpacity(0.4),
           ),
-
-        if (!_isPlayingPreview)
+        if (!_isPlayingPreview && _controller != null)
           InkWell(
             onTap: () {
               setState(() {
                 _isPlayingPreview = true;
               });
-              _controller.play();
+              _controller!.play();
             },
             child: Container(
               width: 41,
@@ -92,7 +94,6 @@ class _VideoDetailsWidgetState extends State<VideoDetailsWidget> {
               ),
             ),
           ),
-
         Positioned(
           top: 10,
           left: 21,
@@ -108,20 +109,30 @@ class _VideoDetailsWidgetState extends State<VideoDetailsWidget> {
                   color: AppColors.colorEFF2,
                 ),
               ),
-              Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.6),
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                alignment: Alignment.center,
-                child: Icon(
-                  widget.item.saved ? Icons.bookmark : Icons.bookmark_border,
-                  color: AppColors.color707E,
-                  size: 18,
-                ),
-              ),
+              Obx(() {
+                final controller = Get.find<DisplayPageController>();
+                return InkWell(
+                  onTap: () {
+                    controller.toggleBookmark();
+                  },
+                  child: Container(
+                    width: 24,
+                    height: 24,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    alignment: Alignment.center,
+                    child: Icon(
+                      controller.isBookmarked.value
+                          ? Icons.bookmark
+                          : Icons.bookmark_border,
+                      color: AppColors.color707E,
+                      size: 18,
+                    ),
+                  ),
+                );
+              }),
             ],
           ),
         ),
@@ -129,3 +140,5 @@ class _VideoDetailsWidgetState extends State<VideoDetailsWidget> {
     );
   }
 }
+
+

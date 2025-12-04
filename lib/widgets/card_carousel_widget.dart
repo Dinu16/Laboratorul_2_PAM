@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/card_carousel_item.dart';
-import 'package:lab_2/widgets/card_widget.dart';
+import '../list_items/card_carousel_item.dart';
+import 'card_widget.dart';
 
 class CardCarouselWidget extends StatelessWidget {
   const CardCarouselWidget({
@@ -35,3 +35,5 @@ class CardCarouselWidget extends StatelessWidget {
     );
   }
 }
+
+

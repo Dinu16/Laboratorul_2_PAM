@@ -1,4 +1,4 @@
-import 'package:lab_2/list_items/list_item.dart';
+import 'list_item.dart';
 
 class VideoDetailsListItem extends ListItem {
   final String thumbnail;
@@ -9,3 +9,5 @@ class VideoDetailsListItem extends ListItem {
     required this.previewVideo,
     required this.saved});
 }
+
+

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/search_bar_list_item.dart';
-import 'package:lab_2/resources/app_colors.dart';
+import '../list_items/search_bar_list_item.dart';
+import '../resources/app_colors.dart';
 
 class SearchBarWidget extends StatelessWidget {
   const SearchBarWidget({super.key, required this.item});
@@ -54,3 +54,5 @@ class SearchBarWidget extends StatelessWidget {
     );
   }
 }
+
+

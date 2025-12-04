@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/skills_list_item.dart';
-import 'package:lab_2/widgets/skills_widget.dart';
+import '../list_items/skills_list_item.dart';
+import 'skills_widget.dart';
 
 class SkillsListWidget extends StatelessWidget {
   const SkillsListWidget({
@@ -25,3 +25,5 @@ class SkillsListWidget extends StatelessWidget {
     );
   }
 }
+
+

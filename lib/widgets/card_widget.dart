@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lab_2/list_items/card_item.dart';
-import 'package:lab_2/resources/app_colors.dart';
-
-import '../pages/course_display_page.dart';
+import '../controllers/home_page_controller.dart';
+import '../list_items/card_item.dart';
+import '../resources/app_colors.dart';
 
 class CardWidget extends StatelessWidget {
   const CardWidget({super.key, required this.item});
@@ -13,7 +12,10 @@ class CardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed('/course-display-page');
+        final courseId = item.id.toString().trim();
+        if (courseId.isNotEmpty) {
+          Get.toNamed('/course-display-page', arguments: courseId);
+        }
       },
       child: Container(
         width: 130,
@@ -36,7 +38,7 @@ class CardWidget extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(12)),
+              const BorderRadius.vertical(top: Radius.circular(12)),
               child: Stack(
                 children: [
                   Image.network(
@@ -65,7 +67,7 @@ class CardWidget extends StatelessWidget {
                           strokeWidth: 2,
                           value: loadingProgress.expectedTotalBytes != null
                               ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes!
+                              loadingProgress.expectedTotalBytes!
                               : null,
                         ),
                       );
@@ -74,20 +76,31 @@ class CardWidget extends StatelessWidget {
                   Positioned(
                     top: 6,
                     right: 6,
-                    child: Container(
-                      width: 22,
-                      height: 22,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.6),
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                      alignment: Alignment.center,
-                      child: Icon(
-                        item.saved ? Icons.bookmark : Icons.bookmark_border,
-                        color: AppColors.color707E,
-                        size: 14,
-                      ),
-                    ),
+                    child: Obx(() {
+                      final controller = Get.find<HomePageController>();
+                      final isBookmarked = controller.isBookmarked(item.id);
+                      return InkWell(
+                        onTap: () {
+                          controller.toggleBookmark(item.id);
+                        },
+                        child: Container(
+                          width: 22,
+                          height: 22,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.6),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          alignment: Alignment.center,
+                          child: Icon(
+                            isBookmarked
+                                ? Icons.bookmark
+                                : Icons.bookmark_border,
+                            color: AppColors.color707E,
+                            size: 14,
+                          ),
+                        ),
+                      );
+                    }),
                   ),
                 ],
               ),

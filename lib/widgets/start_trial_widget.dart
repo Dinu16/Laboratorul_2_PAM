@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/resources/app_colors.dart';
+import '../resources/app_colors.dart';
 
 class StartTrialWidget extends StatelessWidget {
   const StartTrialWidget({
@@ -36,3 +36,5 @@ class StartTrialWidget extends StatelessWidget {
     );
   }
 }
+
+

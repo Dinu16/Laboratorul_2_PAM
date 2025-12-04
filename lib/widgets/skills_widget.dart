@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/skills_item.dart';
+import '../list_items/skills_item.dart';
 import '../resources/app_colors.dart';
 
 class SkillsWidget extends StatelessWidget {
@@ -37,3 +37,5 @@ class SkillsWidget extends StatelessWidget {
     );
   }
 }
+
+

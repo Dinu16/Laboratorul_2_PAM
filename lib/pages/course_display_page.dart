@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lab_2/controllers/home_page_controller.dart';
-import 'package:lab_2/list_items/card_carousel_item.dart';
-import 'package:lab_2/list_items/course_details_list_item.dart';
-import 'package:lab_2/list_items/description_list_item.dart';
-import 'package:lab_2/list_items/enroll_list_item.dart';
-import 'package:lab_2/list_items/lesson_list_item.dart';
-import 'package:lab_2/list_items/section_details_list_item.dart';
-import 'package:lab_2/list_items/skills_list_item.dart';
-import 'package:lab_2/list_items/start_trial_list_item.dart';
-import 'package:lab_2/list_items/title_price_item.dart';
-import 'package:lab_2/list_items/video_details_list_item.dart';
-import 'package:lab_2/resources/app_colors.dart';
-import 'package:lab_2/widgets/card_carousel_widget.dart';
-import 'package:lab_2/widgets/course_details_list_widget.dart';
-import 'package:lab_2/widgets/description_widget.dart';
-import 'package:lab_2/widgets/enroll_widget.dart';
-import 'package:lab_2/widgets/lesson_list_widget.dart';
-import 'package:lab_2/widgets/section_details_widget.dart';
-import 'package:lab_2/widgets/skills_list_widget.dart';
-import 'package:lab_2/widgets/start_trial_widget.dart';
-import 'package:lab_2/widgets/video_details_widget.dart';
+import '../controllers/home_page_controller.dart';
+import '../list_items/card_carousel_item.dart';
+import '../list_items/course_details_list_item.dart';
+import '../list_items/description_list_item.dart';
+import '../list_items/enroll_list_item.dart';
+import '../list_items/lesson_list_item.dart';
+import '../list_items/section_details_list_item.dart';
+import '../list_items/skills_list_item.dart';
+import '../list_items/start_trial_list_item.dart';
+import '../list_items/title_price_item.dart';
+import '../list_items/video_details_list_item.dart';
+import '../resources/app_colors.dart';
+import '../widgets/card_carousel_widget.dart';
+import '../widgets/course_details_list_widget.dart';
+import '../widgets/description_widget.dart';
+import '../widgets/enroll_widget.dart';
+import '../widgets/lesson_list_widget.dart';
+import '../widgets/section_details_widget.dart';
+import '../widgets/skills_list_widget.dart';
+import '../widgets/start_trial_widget.dart';
+import '../widgets/video_details_widget.dart';
 
 import '../controllers/display_page_controller.dart';
 import '../list_items/spacer_item.dart';
@@ -38,15 +38,26 @@ class _CourseDisplayPageState extends State<CourseDisplayPage> {
   @override
   void initState() {
     super.initState();
+    // Get course ID from route arguments and ensure it's a string
+    final args = Get.arguments;
+    final courseId = args != null ? args.toString().trim() : null;
+
+    if (courseId == null || courseId.isEmpty) {
+      print('Warning: Course ID is null or empty');
+    }
+
     // Ensure HomePageController is available
     if (!Get.isRegistered<HomePageController>()) {
-      Get.lazyPut(() => HomePageController());
+      Get.lazyPut(() => HomePageController(getFeedUseCase: Get.find()));
     }
-    // Delete existing controller if any, then create a new one
+    // Delete existing controller if any, then create a new one with courseId
     if (Get.isRegistered<DisplayPageController>()) {
       Get.delete<DisplayPageController>();
     }
-    Get.put(DisplayPageController());
+    Get.put(DisplayPageController(
+      getFeedDetailsByIdUseCase: Get.find(),
+      courseId: courseId,
+    ));
   }
 
   @override

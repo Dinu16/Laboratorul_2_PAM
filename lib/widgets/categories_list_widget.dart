@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/categories_list_item.dart';
-import 'package:lab_2/widgets/category_widget.dart';
+import '../list_items/categories_list_item.dart';
+import 'category_widget.dart';
 
 class CategoriesListWidget extends StatelessWidget {
   const CategoriesListWidget({super.key, required this.item});
@@ -9,15 +9,23 @@ class CategoriesListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 21),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: item.categoryItems
-            .take(3)
-            .map((category) => CategoryWidget(item: category))
-            .toList(),
+    return SizedBox(
+      height: 33,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 21),
+        itemCount: item.categoryItems.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.only(
+              right: index < item.categoryItems.length - 1 ? 8 : 0,
+            ),
+            child: CategoryWidget(item: item.categoryItems[index]),
+          );
+        },
       ),
     );
   }
 }
+
+

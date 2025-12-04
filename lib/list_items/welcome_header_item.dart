@@ -1,4 +1,4 @@
-import 'package:lab_2/list_items/list_item.dart';
+import 'list_item.dart';
 
 class WelcomeHeaderItem extends ListItem {
   final String userName;

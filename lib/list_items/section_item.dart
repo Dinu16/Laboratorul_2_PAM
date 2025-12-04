@@ -1,4 +1,4 @@
-import 'package:lab_2/list_items/list_item.dart';
+import 'list_item.dart';
 
 class SectionItem extends ListItem {
   final String title;
@@ -6,3 +6,5 @@ class SectionItem extends ListItem {
 
   SectionItem({required this.title, required this.rightTitle});
 }
+
+

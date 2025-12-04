@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/course_details_item.dart';
-import 'package:lab_2/resources/app_colors.dart';
+import '../list_items/course_details_item.dart';
+import '../resources/app_colors.dart';
 
 class CourseDetailsWidget extends StatelessWidget {
   const CourseDetailsWidget({
@@ -70,3 +70,5 @@ class CourseDetailsWidget extends StatelessWidget {
     );
   }
 }
+
+

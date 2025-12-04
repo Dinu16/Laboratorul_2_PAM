@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lab_2/list_items/section_item.dart';
+import '../list_items/section_item.dart';
 
 import '../resources/app_colors.dart';
 
@@ -43,3 +43,5 @@ class SectionWidget extends StatelessWidget {
     );
   }
 }
+
+

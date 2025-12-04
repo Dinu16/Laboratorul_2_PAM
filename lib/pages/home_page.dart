@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lab_2/controllers/home_page_controller.dart';
-import 'package:lab_2/list_items/welcome_header_item.dart';
-import 'package:lab_2/resources/app_colors.dart';
-import 'package:lab_2/widgets/welcome_header_widget.dart';
+import '../controllers/home_page_controller.dart';
+import '../list_items/welcome_header_item.dart';
+import '../resources/app_colors.dart';
+import '../widgets/welcome_header_widget.dart';
 
 import '../list_items/card_carousel_item.dart';
 import '../list_items/categories_list_item.dart';
@@ -29,7 +29,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Get.lazyPut(() => HomePageController());
   }
 
   @override

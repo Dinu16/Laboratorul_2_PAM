@@ -1,4 +1,4 @@
-import 'package:lab_2/list_items/list_item.dart';
+import 'list_item.dart';
 
 class ContinueWatchingCardItem extends ListItem {
   final String id;
@@ -10,9 +10,11 @@ class ContinueWatchingCardItem extends ListItem {
 
   ContinueWatchingCardItem(
       {required this.id,
-      required this.imageUrl,
-      required this.title,
-      required this.rating,
-      required this.progress,
-      required this.publisher});
+        required this.imageUrl,
+        required this.title,
+        required this.rating,
+        required this.progress,
+        required this.publisher});
 }
+
+
